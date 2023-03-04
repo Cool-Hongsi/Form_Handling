@@ -1,13 +1,16 @@
 import React from 'react';
+import Header from 'view/component/header/Header';
+import FormComp from 'view/component/form';
+import Table from 'view/component/table/Table';
+import * as Styled from 'Styled.App';
 
 const App = () => {
   return (
-    <div data-testid="app-component">
-      <div>
-        {process.env.REACT_APP_API_ADDRESS}
-        {process.env.REACT_APP_NAME}
-      </div>
-    </div>
+    <Styled.App data-testid="app-component">
+      <Header />
+      <FormComp />
+      <Table />
+    </Styled.App>
   );
 };
 
