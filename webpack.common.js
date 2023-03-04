@@ -41,7 +41,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, './public/index.html'),
-      favicon: './src/resource/asset/favicon.png',
+      favicon: 'src/resource/asset/favicon.ico',
     }),
     new ForkTsCheckerWebpackPlugin({
       async: false,
