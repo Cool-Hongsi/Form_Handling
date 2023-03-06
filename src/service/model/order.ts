@@ -15,5 +15,5 @@ export interface OrderModel {
   supplyDetail: string | null;
   address: string;
   loadPlace: LoadPlace[];
-  seqNo: number;
+  seqNo?: number;
 }

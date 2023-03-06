@@ -4,6 +4,10 @@ import { OrderModel } from 'service/model/order';
 import {
   OnChangeEventType,
   FillFormActionType,
+  AddValidationErrorMsgInputDataType,
+  AddValidationErrorMsgActionType,
+  AddLoadFormActionType,
+  DeleteLoadFormActionType,
   GetOrderRequestActionType,
   GetOrderSuccessActionType,
   GetOrderFailureActionType,
@@ -15,7 +19,7 @@ import {
   DeleteOrderFailureActionType,
 } from 'view/redux/order/orderAction.interface';
 
-const { FILL_FORM } = FORM_ACTION;
+const { FILL_FORM, ADD_VALIDATION_ERROR_MSG, ADD_LOAD_FORM, DELETE_LOAD_FORM } = FORM_ACTION;
 
 const {
   GET_ORDER_REQUEST,
@@ -32,6 +36,22 @@ const {
 export const fillForm = (inputData: OnChangeEventType): FillFormActionType => ({
   type: FILL_FORM,
   payload: inputData,
+});
+
+export const addValidationErrorMsg = (
+  inputData: AddValidationErrorMsgInputDataType,
+): AddValidationErrorMsgActionType => ({
+  type: ADD_VALIDATION_ERROR_MSG,
+  payload: inputData,
+});
+
+export const addLoadForm = (): AddLoadFormActionType => ({
+  type: ADD_LOAD_FORM,
+});
+
+export const deleteLoadForm = (index: number): DeleteLoadFormActionType => ({
+  type: DELETE_LOAD_FORM,
+  payload: index,
 });
 
 export const getOrderRequest = (): GetOrderRequestActionType => ({
@@ -52,12 +72,12 @@ export const postOrderRequest = (): PostOrderRequestActionType => ({
   type: POST_ORDER_REQUEST,
 });
 
-export const postOrderSuccess = (dataFromServer: any): PostOrderSuccessActionType => ({
+export const postOrderSuccess = (dataFromServer: OrderModel): PostOrderSuccessActionType => ({
   type: POST_ORDER_SUCCESS,
   payload: dataFromServer,
 });
 
-export const postOrderFailure = (dataFromServer: any): PostOrderFailureActionType => ({
+export const postOrderFailure = (dataFromServer: Error): PostOrderFailureActionType => ({
   type: POST_ORDER_FAILURE,
   payload: dataFromServer,
 });

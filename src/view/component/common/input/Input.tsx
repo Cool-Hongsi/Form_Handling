@@ -4,17 +4,24 @@ import * as Styled from 'view/component/common/input/Styled.Input';
 
 const Input = ({
   dataTestId,
+  disabled = false,
+  readOnly = false,
+  maxLength = 999,
   width = '100%',
-  height = '40px',
-  placeholder = 'Please input',
+  height = '36px',
+  placeholder = '',
   name,
   value,
-  onChangeFunc,
+  onChangeFunc = () => null,
   onKeyDownFunc = () => null,
+  onClickFunc = () => null,
 }: InputPropsType) => {
   return (
     <Styled.Input
       data-testid={dataTestId}
+      disabled={disabled}
+      readOnly={readOnly}
+      maxLength={maxLength}
       width={width}
       height={height}
       placeholder={placeholder}
@@ -22,6 +29,7 @@ const Input = ({
       value={value}
       onChange={onChangeFunc}
       onKeyDown={onKeyDownFunc}
+      onClick={onClickFunc}
     ></Styled.Input>
   );
 };
