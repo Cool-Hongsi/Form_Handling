@@ -3,35 +3,35 @@ import { createGlobalStyle } from 'styled-components';
 /**
  * Get global padding
  ** header (10px)
- ** body (1rem)
+ ** body (1.6rem)
  */
 export const globalPadding = {
   header: '10px',
-  body: '1rem',
+  body: '1.6rem',
 };
 
 export const colorStyle = {
   dark: '#212529',
-  lightGrey: '#CED4DA',
-  red: '#FF0000',
-
-  black: '#000000',
-  lightDark: '#555555',
-  grey: '#E0E0E0',
-  darkGrey: '#A3A3A3',
   white: '#FFFFFF',
+  lightGray: '#CED4DA',
+  mediumGray: '#E9ECEF',
+  darkGray: '#A3A3A3',
+  lightRed: '#D62518',
+  red: '#FF0000',
+  deepBlue: '#2C3E76',
+  deepBlueHover: '#253564',
 };
 
 export const responsiveSize = {
-  sm: '768px',
-  md: '991px',
+  sm: '767.98px',
+  md: '991.98px',
   lg: '992px',
 };
 
 /**
  * Get specific responsive media query
- ** sm - 0 ~ 767
- ** md - 768 ~ 991
+ ** sm - 0 ~ 767.98
+ ** md - 767.99 ~ 991.98
  ** lg - 992 ~
  * @param selectedSize string (sm / md / lg)
  * @returns matched media query
@@ -39,11 +39,11 @@ export const responsiveSize = {
 export const getResponsiveMediaQuery = (selectedSize: string): string => {
   switch (selectedSize) {
     case 'sm':
-      // 0 ~ 767
+      // 0 ~ 767.98
       return `@media screen and (max-width: ${responsiveSize.sm})`;
     case 'md':
-      // 768 ~ 991
-      return `@media screen and (min-width: ${responsiveSize.sm}) and (max-width: ${responsiveSize.lg})`;
+      // 767.99 ~ 991.98
+      return `@media screen and (min-width: ${responsiveSize.sm}) and (max-width: ${responsiveSize.md})`;
     case 'lg':
       // 992 ~
       return `@media screen and (min-width: ${responsiveSize.lg})`;

@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from 'service/store';
 import { worker } from 'service/mock/serviceWorker';
 import GlobalStyle from 'Styled.GlobalStyle';
+import 'react-datepicker/dist/react-datepicker.css';
 
 worker.start();
 

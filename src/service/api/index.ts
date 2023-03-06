@@ -1,13 +1,21 @@
 import axios, { AxiosResponse } from 'axios';
 
-const headers = {
-  'Content-Type': 'application/json',
-  // Other options...
-};
+interface BodyType {
+  [key: string]: string | number;
+}
 
 export const getOrderRequestApi = async (): Promise<AxiosResponse | Error> => {
   try {
-    const result: AxiosResponse = await axios.get('/orders', { headers });
+    const result: AxiosResponse = await axios.get(`/orders`);
+    return result;
+  } catch (err) {
+    return err as Error;
+  }
+};
+
+export const postOrderRequestApi = async (body: BodyType): Promise<AxiosResponse | Error> => {
+  try {
+    const result: AxiosResponse = await axios.post(`/orders`, body);
     return result;
   } catch (err) {
     return err as Error;

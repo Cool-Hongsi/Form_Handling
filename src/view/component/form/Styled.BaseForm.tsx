@@ -2,9 +2,6 @@ import styled from 'styled-components';
 import { colorStyle, getResponsiveMediaQuery } from 'Styled.GlobalStyle';
 
 export const BaseForm = styled.div`
-  border: 2px solid green;
-
-  // column-gap: 2rem;
   .baseform-row {
     border: 2px solid red;
     display: grid;
@@ -16,14 +13,36 @@ export const BaseForm = styled.div`
       font-weight: 700;
       color: ${colorStyle.dark};
     }
-  }
-  ${getResponsiveMediaQuery('sm')} {
-    color: red;
-  }
-  ${getResponsiveMediaQuery('md')} {
-    color: blue;
-  }
-  ${getResponsiveMediaQuery('lg')} {
-    color: black;
+
+    .baseform-error-msg {
+      font-size: 14px;
+      color: ${colorStyle.red};
+    }
+
+    .baseform-row-divide {
+      display: flex;
+      align-items: center;
+
+      .baseform-row-divider {
+        margin: 0 10px;
+      }
+
+      .baseform-row-divider-hidden {
+        visibility: hidden;
+      }
+
+      .baseform-date-input {
+        padding: 0 12px;
+        border-radius: 0.375rem;
+        border: 1px solid ${colorStyle.lightGray};
+        font-size: 1rem;
+        width: 100%;
+        height: 40px;
+
+        ${getResponsiveMediaQuery('sm')} {
+          width: 100%;
+        }
+      }
+    }
   }
 `;

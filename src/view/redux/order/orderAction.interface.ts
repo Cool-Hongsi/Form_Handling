@@ -3,7 +3,7 @@ import { AnyAction } from 'redux';
 import { FORM_ACTION, ORDER_ACTION } from 'service/const/action';
 import { OrderModel } from 'service/model/order';
 
-const { FILL_FORM } = FORM_ACTION;
+const { FILL_FORM, ADD_VALIDATION_ERROR_MSG, ADD_LOAD_FORM, DELETE_LOAD_FORM } = FORM_ACTION;
 
 const {
   GET_ORDER_REQUEST,
@@ -21,11 +21,42 @@ export interface OnChangeEventType {
   type: string;
   name: string;
   value: string;
+  index?: number;
+}
+
+export interface AddValidationErrorMsgInputDataType {
+  tempBaseForm: {
+    [key: string]: {
+      value: string;
+      errorMsg: string;
+    };
+  };
+  tempLoadForm: {
+    [key: string]: {
+      value: string;
+      errorMsg: string;
+    };
+  }[];
 }
 
 export interface FillFormActionType {
   type: typeof FILL_FORM;
   payload: OnChangeEventType;
+}
+
+export interface AddValidationErrorMsgActionType {
+  type: typeof ADD_VALIDATION_ERROR_MSG;
+  payload: AddValidationErrorMsgInputDataType;
+}
+
+export interface AddLoadFormActionType {
+  type: typeof ADD_LOAD_FORM;
+  payload?: null;
+}
+
+export interface DeleteLoadFormActionType {
+  type: typeof DELETE_LOAD_FORM;
+  payload: number;
 }
 
 export interface GetOrderRequestActionType {
@@ -45,17 +76,17 @@ export interface GetOrderFailureActionType {
 
 export interface PostOrderRequestActionType {
   type: typeof POST_ORDER_REQUEST;
-  payload?: any;
+  payload?: null;
 }
 
 export interface PostOrderSuccessActionType {
   type: typeof POST_ORDER_SUCCESS;
-  payload: any;
+  payload: OrderModel;
 }
 
 export interface PostOrderFailureActionType {
   type: typeof POST_ORDER_FAILURE;
-  payload: any;
+  payload: Error;
 }
 
 export interface DeleteOrderRequestActionType {
@@ -76,6 +107,9 @@ export interface DeleteOrderFailureActionType {
 export type OrderActionTypes =
   | AnyAction
   | FillFormActionType
+  | AddValidationErrorMsgActionType
+  | AddLoadFormActionType
+  | DeleteLoadFormActionType
   | GetOrderRequestActionType
   | GetOrderSuccessActionType
   | GetOrderFailureActionType
