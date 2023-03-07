@@ -20,7 +20,7 @@ const RowCount = () => {
   };
 
   return (
-    <Styled.RowCount>
+    <Styled.RowCount data-testid="rowCount-component">
       <Select
         dataTestId="row-count-select"
         name={'rowCount'}

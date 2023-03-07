@@ -50,7 +50,7 @@ const TableComp = () => {
   }
 
   return (
-    <Styled.TableComp>
+    <Styled.TableComp data-testid="tableComp-component">
       {splittedResult.length > 0 && (
         <table className="table-container">
           <thead>
@@ -61,6 +61,7 @@ const TableComp = () => {
                   className={`checkBox-creator ${
                     deleteList.length === splittedResult[currentPage].length ? 'fill-background' : null
                   }`}
+                  data-testid="click-all-checkBox"
                   onClick={() => clickCheckBoxFunc()}
                 >
                   {deleteList.length === splittedResult[currentPage].length ? (
@@ -84,12 +85,13 @@ const TableComp = () => {
           <tbody>
             {splittedResult[currentPage].map((row: OrderModel, index: number) => {
               return (
-                <tr key={index}>
+                <tr key={index} data-testid="table-row">
                   <td>
                     <div
                       className={`checkBox-creator ${
                         deleteList.includes(row.seqNo as number) ? 'fill-background' : null
                       }`}
+                      data-testid="click-each-checkBox"
                       onClick={() => clickCheckBoxFunc(row.seqNo)}
                     >
                       {deleteList.includes(row.seqNo as number) ? <IoMdCheckmark /> : null}
@@ -98,13 +100,13 @@ const TableComp = () => {
                   </td>
                   <td>{row.name}</td>
                   <td>{row.phoneNumber}</td>
-                  <td>
+                  <td data-testid="row-fromDate-toDate">
                     {row.fromDate} - {row.toDate}
                   </td>
                   <td>{row.item}</td>
                   <td>{row.supply}</td>
-                  <td>{row.address}</td>
-                  <td className="td-copy-order" onClick={() => copyOrderFormFunc(row)}>
+                  <td data-testid="row-address">{row.address}</td>
+                  <td className="td-copy-order" data-testid="copy-order" onClick={() => copyOrderFormFunc(row)}>
                     오더복사
                   </td>
                 </tr>

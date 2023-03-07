@@ -26,7 +26,7 @@ const Pagination = () => {
   };
 
   return (
-    <Styled.Pagination>
+    <Styled.Pagination data-testid="pagination-component">
       <Button
         dataTestId="pagination-go-first-button"
         width="27px"

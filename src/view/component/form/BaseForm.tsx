@@ -48,10 +48,12 @@ const BaseForm = () => {
   };
 
   return (
-    <Styled.BaseForm>
+    <Styled.BaseForm data-testid="baseForm-component">
       {/* NAME */}
       <div className="baseform-row">
-        <label className="baseform-row-title">이름</label>
+        <label className="baseform-row-title" data-testid="baseform-name-label">
+          이름
+        </label>
         <div>
           <Input
             dataTestId="baseform-name-input"
@@ -60,16 +62,22 @@ const BaseForm = () => {
             // onChangeFunc={(e) => pattern.name.test(e.target.value) && onChangeBaseInput(e)}
             onChangeFunc={onChangeBaseInput}
           />
-          {baseForm[BASE_NAME].errorMsg && <span className="baseform-error-msg">{baseForm[BASE_NAME].errorMsg}</span>}
+          {baseForm[BASE_NAME].errorMsg && (
+            <span className="baseform-error-msg" data-testid="baseform-name-error-msg">
+              {baseForm[BASE_NAME].errorMsg}
+            </span>
+          )}
         </div>
       </div>
 
       {/* PHONE NUMBER */}
       <div className="baseform-row">
-        <label className="baseform-row-title">휴대폰번호</label>
+        <label className="baseform-row-title" data-testid="baseform-phoneNumber-label">
+          휴대폰번호
+        </label>
         <div>
           <Input
-            dataTestId="baseform-phone-number-input"
+            dataTestId="baseform-phoneNumber-input"
             maxLength={13}
             name={BASE_PHONE_NUMBER}
             value={baseForm[BASE_PHONE_NUMBER].value}
@@ -87,18 +95,22 @@ const BaseForm = () => {
             }}
           />
           {baseForm[BASE_PHONE_NUMBER].errorMsg && (
-            <span className="baseform-error-msg">{baseForm[BASE_PHONE_NUMBER].errorMsg}</span>
+            <span className="baseform-error-msg" data-testid="baseform-phoneNumber-error-msg">
+              {baseForm[BASE_PHONE_NUMBER].errorMsg}
+            </span>
           )}
         </div>
       </div>
 
       {/* FROM & TO DATE */}
       <div className="baseform-row">
-        <label className="baseform-row-title">날짜</label>
+        <label className="baseform-row-title" data-testid="baseform-date-label">
+          날짜
+        </label>
         <div>
           <div className="baseform-row-divide">
             <DatePicker
-              data-testId="baseform-form-date-input"
+              data-testId="baseform-fromDate-input"
               className="baseform-date-input"
               name={BASE_FROM_DATE}
               value={baseForm[BASE_FROM_DATE].value}
@@ -109,7 +121,7 @@ const BaseForm = () => {
             />
             <span className="baseform-row-divider">~</span>
             <DatePicker
-              data-testId="baseform-to-date-input"
+              data-testId="baseform-toDate-input"
               className="baseform-date-input"
               name={BASE_TO_DATE}
               value={baseForm[BASE_TO_DATE].value}
@@ -120,17 +132,23 @@ const BaseForm = () => {
             />
           </div>
           {baseForm[BASE_FROM_DATE].errorMsg && (
-            <span className="baseform-error-msg">{baseForm[BASE_FROM_DATE].errorMsg}</span>
+            <span className="baseform-error-msg" data-testid="baseform-fromDate-error-msg">
+              {baseForm[BASE_FROM_DATE].errorMsg}
+            </span>
           )}
           {!baseForm[BASE_FROM_DATE].errorMsg && baseForm[BASE_TO_DATE].errorMsg && (
-            <span className="baseform-error-msg">{baseForm[BASE_TO_DATE].errorMsg}</span>
+            <span className="baseform-error-msg" data-testid="baseform-toDate-error-msg">
+              {baseForm[BASE_TO_DATE].errorMsg}
+            </span>
           )}
         </div>
       </div>
 
       {/* ITEM & DETAIL */}
       <div className="baseform-row">
-        <label className="baseform-row-title">품목</label>
+        <label className="baseform-row-title" data-testid="baseform-item-label">
+          품목
+        </label>
         <div>
           <div className="baseform-row-divide">
             <Select
@@ -153,16 +171,24 @@ const BaseForm = () => {
               onChangeFunc={onChangeBaseInput}
             />
           </div>
-          {baseForm[BASE_ITEM].errorMsg && <span className="baseform-error-msg">{baseForm[BASE_ITEM].errorMsg}</span>}
+          {baseForm[BASE_ITEM].errorMsg && (
+            <span className="baseform-error-msg" data-testid="baseform-item-error-msg">
+              {baseForm[BASE_ITEM].errorMsg}
+            </span>
+          )}
           {baseForm[BASE_ITEM_DETAIL].errorMsg && (
-            <span className="baseform-error-msg">{baseForm[BASE_ITEM_DETAIL].errorMsg}</span>
+            <span className="baseform-error-msg" data-testid="baseform-itemDetail-error-msg">
+              {baseForm[BASE_ITEM_DETAIL].errorMsg}
+            </span>
           )}
         </div>
       </div>
 
       {/* SUPPLY & DETAIL */}
       <div className="baseform-row">
-        <label className="baseform-row-title">물량</label>
+        <label className="baseform-row-title" data-testid="baseform-supply-label">
+          물량
+        </label>
         <div>
           <div className="baseform-row-divide">
             <Select
@@ -186,14 +212,18 @@ const BaseForm = () => {
             />
           </div>
           {baseForm[BASE_SUPPLY_DETAIL].errorMsg && (
-            <span className="baseform-error-msg">{baseForm[BASE_SUPPLY_DETAIL].errorMsg}</span>
+            <span className="baseform-error-msg" data-testid="baseform-supplyDetail-error-msg">
+              {baseForm[BASE_SUPPLY_DETAIL].errorMsg}
+            </span>
           )}
         </div>
       </div>
 
       {/* ADDRESS */}
       <div className="baseform-row">
-        <label className="baseform-row-title">출근지</label>
+        <label className="baseform-row-title" data-testid="baseform-address-label">
+          출근지
+        </label>
         <div>
           <Input
             dataTestId="baseform-address-input"
@@ -203,7 +233,9 @@ const BaseForm = () => {
             onClickFunc={() => setAddressModalToggle(true)}
           />
           {baseForm[BASE_ADDRESS].errorMsg && (
-            <span className="baseform-error-msg">{baseForm[BASE_ADDRESS].errorMsg}</span>
+            <span className="baseform-error-msg" data-testid="baseform-address-error-msg">
+              {baseForm[BASE_ADDRESS].errorMsg}
+            </span>
           )}
         </div>
       </div>

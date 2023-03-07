@@ -13,7 +13,6 @@ const Input = ({
   name,
   value,
   onChangeFunc = () => null,
-  onKeyDownFunc = () => null,
   onClickFunc = () => null,
 }: InputPropsType) => {
   return (
@@ -28,7 +27,6 @@ const Input = ({
       name={name}
       value={value}
       onChange={onChangeFunc}
-      onKeyDown={onKeyDownFunc}
       onClick={onClickFunc}
     ></Styled.Input>
   );

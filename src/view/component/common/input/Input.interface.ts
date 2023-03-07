@@ -9,6 +9,5 @@ export interface InputPropsType {
   name: string;
   value: string | number;
   onChangeFunc?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onKeyDownFunc?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   onClickFunc?: () => void;
 }

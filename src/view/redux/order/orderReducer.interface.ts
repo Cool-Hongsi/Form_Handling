@@ -3,18 +3,18 @@ import { OrderModel } from 'service/model/order';
 
 export interface OrderState {
   getOrderApi: {
-    loading: boolean;
-    error: Error | null;
+    loading?: boolean;
+    error?: Error | null;
     result: OrderModel[]; // Original Data
   };
   postOrderApi: {
-    loading: boolean;
-    error: Error | null;
+    loading?: boolean;
+    error?: Error | null;
     result: OrderModel | null;
   };
   deleteOrderApi: {
-    loading: boolean;
-    error: Error | null;
+    loading?: boolean;
+    error?: Error | null;
     result: string;
   };
   inputData: {

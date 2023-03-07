@@ -27,7 +27,7 @@ const TableContainer = () => {
   };
 
   return (
-    <>
+    <div data-testid="tableContainer-component">
       <Styled.TableContainer>
         <Styled.TableTopSection>
           <Button dataTestId="delete-button" onClickFunc={deleteOrder}>
@@ -54,7 +54,7 @@ const TableContainer = () => {
           <div>{result}</div>
         </Modal>
       )}
-    </>
+    </div>
   );
 };
 
