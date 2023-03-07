@@ -22,7 +22,7 @@ export const Modal = styled.div<Partial<ModalPropsType>>`
     width: ${(props) => props.width};
 
     ${getResponsiveMediaQuery('md')} {
-      width: 50%;
+      width: 500px;
     }
     ${getResponsiveMediaQuery('sm')} {
       width: 80%;
@@ -46,8 +46,10 @@ export const Modal = styled.div<Partial<ModalPropsType>>`
 
     .modal-content {
       padding: 1.4rem 1.2rem;
+      word-break: break-all;
 
-      .post-request-result-modal-title {
+      .post-request-result-modal-title,
+      .delete-request-result-modal-title {
         font-size: 1.5rem;
         margin-bottom: 1rem;
       }

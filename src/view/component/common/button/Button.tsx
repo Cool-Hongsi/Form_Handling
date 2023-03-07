@@ -10,7 +10,11 @@ const Button = ({
   height = '35px',
   color = colorStyle.white,
   backgroundColor = colorStyle.deepBlue,
-  text,
+  hoverBackgroundColor = colorStyle.deepBlueHover,
+  border = 'none',
+  borderRadius = '5px',
+  cursorActive = true,
+  children,
   onClickFunc = () => null,
 }: ButtonPropsType) => {
   return (
@@ -20,10 +24,14 @@ const Button = ({
       height={height}
       color={color}
       backgroundColor={backgroundColor}
+      hoverBackgroundColor={hoverBackgroundColor}
+      border={border}
+      borderRadius={borderRadius}
+      cursorActive={cursorActive}
       data-testid={dataTestId}
       onClick={onClickFunc}
     >
-      {text}
+      {children}
     </Styled.Button>
   );
 };

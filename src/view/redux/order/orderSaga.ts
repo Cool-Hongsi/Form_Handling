@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AxiosResponse } from 'axios';
 import { takeLatest, call, put, select } from 'redux-saga/effects';
-import { getOrderRequestApi, postOrderRequestApi } from 'service/api';
+import { deleteOrderRequestApi, getOrderRequestApi, postOrderRequestApi } from 'service/api';
 import { ORDER_ACTION } from 'service/const/action';
 
 import {
@@ -11,12 +11,17 @@ import {
 } from 'view/redux/order/orderAction.interface';
 import {
   addValidationErrorMsg,
+  deleteOrderFailure,
+  deleteOrderSuccess,
   getOrderFailure,
   getOrderSuccess,
   postOrderFailure,
   postOrderSuccess,
+  splitOrderData,
 } from 'view/redux/order/orderAction';
 import { inputValidation } from 'service/util/inputValidation';
+import { splitArray } from 'service/util/splitArray';
+import { OrderModel } from 'service/model/order';
 
 const { GET_ORDER_REQUEST, POST_ORDER_REQUEST, DELETE_ORDER_REQUEST } = ORDER_ACTION;
 
@@ -24,14 +29,20 @@ export function* getOrderRequestFunc(action: GetOrderRequestActionType): any {
   try {
     const getOrderRequestResult: AxiosResponse | Error = yield call(getOrderRequestApi);
 
-    // Fail Case
+    // Fail
     if (!(getOrderRequestResult as AxiosResponse).status || (getOrderRequestResult as AxiosResponse).status !== 200) {
       yield put(getOrderFailure(getOrderRequestResult as Error));
-      return;
+      return; // Stop further processing
     }
-
-    // Success Case
+    // Success
+    // 1. Store Original Data (For Handling Row Count in Table Later)
+    // 2. Create 2D Array Data by Original Data
     yield put(getOrderSuccess((getOrderRequestResult as AxiosResponse).data));
+
+    const reducerSelector = yield select();
+    const rowCount = reducerSelector.orderReducer.tableData.rowCount; // 20
+    const splittedArray: OrderModel[][] = yield splitArray((getOrderRequestResult as AxiosResponse).data, rowCount);
+    yield put(splitOrderData(splittedArray, rowCount));
   } catch (err) {
     yield put(getOrderFailure(err as Error));
     return;
@@ -74,7 +85,7 @@ export function* postOrderRequestFunc(action: PostOrderRequestActionType): any {
     try {
       const postOrderRequestResult: AxiosResponse | Error = yield call(postOrderRequestApi, body);
 
-      // Fail Case
+      // Fail
       if (
         !(postOrderRequestResult as AxiosResponse).status ||
         (postOrderRequestResult as AxiosResponse).status !== 200
@@ -83,7 +94,7 @@ export function* postOrderRequestFunc(action: PostOrderRequestActionType): any {
         return;
       }
 
-      // Success Case
+      // Success
       yield put(postOrderSuccess((postOrderRequestResult as AxiosResponse).data));
     } catch (err) {
       yield put(postOrderFailure(err as Error));
@@ -93,7 +104,35 @@ export function* postOrderRequestFunc(action: PostOrderRequestActionType): any {
 }
 
 export function* deleteOrderRequestFunc(action: DeleteOrderRequestActionType): any {
-  yield console.log(action);
+  const reducerSelector = yield select();
+  const deleteList: number[] = reducerSelector.orderReducer.tableData.deleteList;
+
+  if (deleteList.length === 0) {
+    yield alert('선택된 테이블 행이 없습니다');
+    yield put(deleteOrderFailure(new Error('선택된 테이블 행이 없습니다')));
+    return; // Stop further processing
+  }
+
+  try {
+    const deleteOrderRequestResult: AxiosResponse | Error = yield call(deleteOrderRequestApi, deleteList);
+
+    // Fail
+    if (
+      !(deleteOrderRequestResult as AxiosResponse).status ||
+      (deleteOrderRequestResult as AxiosResponse).status !== 200
+    ) {
+      yield put(deleteOrderFailure(deleteOrderRequestResult as Error));
+      return;
+    }
+
+    // Success
+    // Get deletedSeqNoList (from query)
+    const deletedSeqNoList: string[] = (deleteOrderRequestResult as AxiosResponse).data.split('?seqNoList=');
+    yield put(deleteOrderSuccess(deletedSeqNoList[1]));
+  } catch (err) {
+    yield put(deleteOrderFailure(err as Error));
+    return;
+  }
 }
 
 export function* orderSagaWatcher() {

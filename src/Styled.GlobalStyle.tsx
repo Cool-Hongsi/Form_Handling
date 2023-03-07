@@ -16,10 +16,13 @@ export const colorStyle = {
   lightGray: '#CED4DA',
   mediumGray: '#E9ECEF',
   darkGray: '#A3A3A3',
+  deepGray: '#DEE2E6',
   lightRed: '#D62518',
   red: '#FF0000',
   deepBlue: '#2C3E76',
   deepBlueHover: '#253564',
+  gray: '#CECECE',
+  blue: '#0D6EFD',
 };
 
 export const responsiveSize = {

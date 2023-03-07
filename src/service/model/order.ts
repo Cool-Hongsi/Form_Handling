@@ -1,4 +1,4 @@
-interface LoadPlace {
+export interface LoadPlace {
   name: string;
   address: string;
   date: string;

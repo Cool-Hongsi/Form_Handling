@@ -14,7 +14,9 @@ const Modal = ({ children, dataTestId, width = '500px', confirmSection = false, 
         <div className="modal-content">{children}</div>
         {confirmSection && (
           <div className="modal-confirm-section">
-            <Button dataTestId="modal-confirm-section-button" text="확인" onClickFunc={onClickCloseFunc} />
+            <Button dataTestId="modal-confirm-section-button" onClickFunc={onClickCloseFunc}>
+              확인
+            </Button>
           </div>
         )}
       </div>

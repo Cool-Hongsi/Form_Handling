@@ -3,7 +3,6 @@ import { colorStyle, getResponsiveMediaQuery } from 'Styled.GlobalStyle';
 
 export const BaseForm = styled.div`
   .baseform-row {
-    border: 2px solid red;
     display: grid;
     grid-template-columns: 1fr 5fr;
     margin-bottom: 1rem;
@@ -37,7 +36,7 @@ export const BaseForm = styled.div`
         border: 1px solid ${colorStyle.lightGray};
         font-size: 1rem;
         width: 100%;
-        height: 40px;
+        height: 36px;
 
         ${getResponsiveMediaQuery('sm')} {
           width: 100%;

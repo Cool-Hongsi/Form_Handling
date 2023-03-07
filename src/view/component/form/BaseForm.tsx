@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Input from 'view/component/common/input/Input';
 import Select from 'view/component/common/select/Select';
-import { INPUT_CONST } from 'service/const/input';
+import { INPUT_CONST } from 'service/const/general';
 import useAppSelector from 'service/hook/useAppSelector';
 import { useAppDispatch } from 'service/hook/useAppDispatch';
 import { fillForm } from 'view/redux/order/orderAction';

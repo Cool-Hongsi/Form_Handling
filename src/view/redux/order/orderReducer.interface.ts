@@ -5,7 +5,7 @@ export interface OrderState {
   getOrderApi: {
     loading: boolean;
     error: Error | null;
-    result: OrderModel[];
+    result: OrderModel[]; // Original Data
   };
   postOrderApi: {
     loading: boolean;
@@ -15,7 +15,7 @@ export interface OrderState {
   deleteOrderApi: {
     loading: boolean;
     error: Error | null;
-    result: number[];
+    result: string;
   };
   inputData: {
     [key: string]: any;
@@ -31,5 +31,12 @@ export interface OrderState {
         errorMsg: string;
       };
     }[];
+  };
+  tableData: {
+    splittedResult: OrderModel[][]; // Splitted Data For Row Count
+    rowCount: number;
+    totalPage: number;
+    currentPage: number;
+    deleteList: number[];
   };
 }

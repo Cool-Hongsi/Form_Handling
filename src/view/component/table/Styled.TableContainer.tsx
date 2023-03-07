@@ -2,9 +2,16 @@ import styled from 'styled-components';
 import { globalPadding } from 'Styled.GlobalStyle';
 
 export const TableContainer = styled.section`
-  border: 1px solid blue;
+  padding: 0 ${globalPadding.body} ${globalPadding.body} ${globalPadding.body};
+`;
+
+export const TableTopSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding: 0 ${globalPadding.body} ${globalPadding.body} ${globalPadding.body};
+`;
+
+export const TableBottomSection = styled.div`
+  display: flex;
+  justify-content: center;
 `;

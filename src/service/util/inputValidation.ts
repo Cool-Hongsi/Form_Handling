@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { OrderState } from 'view/redux/order/orderReducer.interface';
-import { INPUT_CONST } from 'service/const/input';
+import { INPUT_CONST } from 'service/const/general';
 import pattern from 'service/util/inputPattern';
 import moment from 'moment';
 
 const {
+  BASE_SEQ_NO,
   BASE_NAME,
   BASE_PHONE_NUMBER,
   BASE_FROM_DATE,
@@ -54,6 +55,10 @@ export const inputValidation = (orderReducer: OrderState) => {
     ) {
       tempBaseForm = formFormatter(tempBaseForm, entry[0], entry[1].value, '값을 입력 해주세요');
     } else {
+      // BASE_SEQ_NO (No need validation)
+      if (entry[0] === BASE_SEQ_NO) {
+        tempBaseForm = formFormatter(tempBaseForm, entry[0], entry[1].value, '');
+      }
       // BASE_NAME
       if (entry[0] === BASE_NAME) {
         if (pattern.name.test(entry[1].value)) {
