@@ -71,7 +71,7 @@ export interface OrderModel {
 
 - React Hook (Local State)
 - Redux (Global State)
-- Saga (Middlware)
+- Saga (Middleware)
 
 ## UI
 
