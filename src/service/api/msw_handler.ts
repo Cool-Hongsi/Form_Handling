@@ -6,7 +6,11 @@ export const handlers = [
     return res(ctx.status(200), ctx.json(mockApiData));
   }),
 
-  rest.post('/orders', (req, res, ctx) => {
+  rest.post('/order', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(req.body));
+  }),
+
+  rest.delete('/order', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(req.url));
   }),
 ];

@@ -36,7 +36,9 @@ const FormContainer = () => {
         <Styled.FormContainer>
           <BaseForm />
           <LoadForm />
-          <Button type="submit" dataTestId="register-button" text="등록" />
+          <Button type="submit" dataTestId="register-button">
+            등록
+          </Button>
         </Styled.FormContainer>
       </form>
 

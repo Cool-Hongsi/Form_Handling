@@ -4,7 +4,7 @@ import { IoIosAdd, IoIosClose } from 'react-icons/io';
 import { useAppDispatch } from 'service/hook/useAppDispatch';
 import { addLoadForm, deleteLoadForm, fillForm } from 'view/redux/order/orderAction';
 import Input from 'view/component/common/input/Input';
-import { INPUT_CONST } from 'service/const/input';
+import { INPUT_CONST } from 'service/const/general';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import Modal from 'view/component/common/modal/Modal';

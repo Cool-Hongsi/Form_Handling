@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface ButtonPropsType {
   dataTestId: string;
   type?: 'button' | 'submit' | 'reset';
@@ -5,6 +7,10 @@ export interface ButtonPropsType {
   height?: string;
   color?: string;
   backgroundColor?: string;
-  text: string;
+  hoverBackgroundColor?: string;
+  border?: string;
+  borderRadius?: string;
+  cursorActive?: boolean;
+  children: ReactNode;
   onClickFunc?: () => void;
 }

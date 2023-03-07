@@ -4,6 +4,6 @@ export interface SelectPropsType {
   width?: string;
   height?: string;
   name: string;
-  value: string;
+  value: string | number;
   onChangeFunc: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }

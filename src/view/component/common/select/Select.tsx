@@ -6,7 +6,7 @@ const Select = ({
   children,
   dataTestId,
   width = '100%',
-  height = '40px',
+  height = '36px',
   name,
   value,
   onChangeFunc,

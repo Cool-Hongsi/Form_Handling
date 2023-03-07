@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colorStyle } from 'Styled.GlobalStyle';
 import { ButtonPropsType } from 'view/component/common/button/Button.interface';
 
 export const Button = styled.button<Partial<ButtonPropsType>>`
@@ -7,13 +6,13 @@ export const Button = styled.button<Partial<ButtonPropsType>>`
   height: ${(props) => props.height};
   color: ${(props) => props.color};
   background-color: ${(props) => props.backgroundColor};
+  border: ${(props) => props.border};
+  border-radius: ${(props) => props.borderRadius};
   font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  cursor: ${(props) => (props.cursorActive ? 'pointer' : 'default')};
   transition: 0.3s;
 
   :hover {
-    background-color: ${colorStyle.deepBlueHover};
+    background-color: ${(props) => props.hoverBackgroundColor};
   }
 `;

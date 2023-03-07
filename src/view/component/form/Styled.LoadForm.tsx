@@ -16,10 +16,6 @@ export const LoadForm = styled.div`
     padding: 8px 10px;
     height: 100%;
 
-    // ${getResponsiveMediaQuery('sm')} {
-    //   padding: 14px 10px;
-    // }
-
     .loadform-row {
       display: flex;
       justify-content: space-between;
@@ -59,7 +55,7 @@ export const LoadForm = styled.div`
         border: 1px solid ${colorStyle.lightGray};
         font-size: 1rem;
         width: 100%;
-        height: 40px;
+        height: 36px;
 
         ${getResponsiveMediaQuery('sm')} {
           width: 100%;
