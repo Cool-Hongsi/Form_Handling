@@ -3,6 +3,9 @@ environment_variables:
   plaintext:
     S3_BUCKET: timf.repo
 phases:
+  install:
+    runtime-versions:
+      nodejs: 16
   pre_build:
     commands:
       - echo Deploying started on `date`
