@@ -20,3 +20,5 @@ phases:
       - echo Deploying project started on `date`
       - echo Syncing S3 Content
       - aws s3 sync ./build s3://${S3_BUCKET}
+      - echo Invalidating Cloudfront cache on `date`
+      - aws cloudfront create-invalidation --distribution-id E3QAHDAULRKUM1 --paths "/*"
