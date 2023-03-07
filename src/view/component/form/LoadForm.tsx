@@ -47,19 +47,27 @@ const LoadForm = () => {
   };
 
   return (
-    <Styled.LoadForm>
+    <Styled.LoadForm data-testid="loadForm-component">
       {/* Load Form */}
       {loadForm.map((_, index) => {
         return (
           <div key={index}>
             <div className="loadform-row">
               <div className="loadform-row-main-title">상차지 정보</div>
-              {index > 0 && <IoIosClose className="delete-loadform-icon" onClick={() => deleteLoadFormFunc(index)} />}
+              {index > 0 && (
+                <IoIosClose
+                  className="delete-loadform-icon"
+                  data-testid="delete-loadform"
+                  onClick={() => deleteLoadFormFunc(index)}
+                />
+              )}
             </div>
 
             {/* NAME */}
             <div className="loadform-input-container">
-              <label className="loadform-row-title">담당자</label>
+              <label className="loadform-row-title" data-testid="loadform-name-label">
+                담당자
+              </label>
               <div>
                 <Input
                   dataTestId="loadform-name-input"
@@ -69,14 +77,18 @@ const LoadForm = () => {
                   onChangeFunc={(e) => onChangeLoadInput(e, index)}
                 />
                 {loadForm[index][LOAD_NAME].errorMsg && (
-                  <span className="loadform-error-msg">{loadForm[index][LOAD_NAME].errorMsg}</span>
+                  <span className="loadform-error-msg" data-testid="loadform-name-error-msg">
+                    {loadForm[index][LOAD_NAME].errorMsg}
+                  </span>
                 )}
               </div>
             </div>
 
             {/* DATE */}
             <div className="loadform-input-container">
-              <label className="loadform-row-title">날짜</label>
+              <label className="loadform-row-title" data-testid="loadform-date-label">
+                날짜
+              </label>
               <div>
                 <DatePicker
                   data-testId="loadform-form-date-input"
@@ -89,14 +101,18 @@ const LoadForm = () => {
                   }}
                 />
                 {loadForm[index][LOAD_DATE].errorMsg && (
-                  <span className="loadform-error-msg">{loadForm[index][LOAD_DATE].errorMsg}</span>
+                  <span className="loadform-error-msg" data-testid="loadform-date-error-msg">
+                    {loadForm[index][LOAD_DATE].errorMsg}
+                  </span>
                 )}
               </div>
             </div>
 
             {/* ADDRESS */}
             <div className="loadform-input-container">
-              <label className="loadform-row-title">상차지</label>
+              <label className="loadform-row-title" data-testid="loadform-address-label">
+                상차지
+              </label>
               <div>
                 <Input
                   dataTestId="loadform-address-input"
@@ -110,7 +126,9 @@ const LoadForm = () => {
                   }}
                 />
                 {loadForm[index][LOAD_ADDRESS].errorMsg && (
-                  <span className="loadform-error-msg">{loadForm[index][LOAD_ADDRESS].errorMsg}</span>
+                  <span className="loadform-error-msg" data-testid="loadform-address-error-msg">
+                    {loadForm[index][LOAD_ADDRESS].errorMsg}
+                  </span>
                 )}
               </div>
             </div>
@@ -132,7 +150,7 @@ const LoadForm = () => {
 
       {/* + Button */}
       {loadForm.length < 3 && (
-        <div className="add-loadform" onClick={addLoadFormFunc}>
+        <div className="add-loadform" data-testid="add-loadform" onClick={addLoadFormFunc}>
           <IoIosAdd className="add-loadform-icon" />
         </div>
       )}

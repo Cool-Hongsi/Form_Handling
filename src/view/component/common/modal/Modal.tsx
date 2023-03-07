@@ -9,7 +9,7 @@ const Modal = ({ children, dataTestId, width = '500px', confirmSection = false, 
     <Styled.Modal data-testid={dataTestId} width={width}>
       <div className="modal-container">
         <div className="modal-title">
-          <IoIosClose className="modal-close-icon" onClick={onClickCloseFunc} />
+          <IoIosClose className="modal-close-icon" data-testid="click-close-modal" onClick={onClickCloseFunc} />
         </div>
         <div className="modal-content">{children}</div>
         {confirmSection && (

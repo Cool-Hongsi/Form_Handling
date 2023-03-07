@@ -10,7 +10,7 @@ export const Pagination = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 
   .show-page-status {

@@ -6,7 +6,7 @@ import * as Styled from 'Styled.App';
 
 const App = () => {
   return (
-    <Styled.App data-testid="app-component">
+    <Styled.App>
       <Header />
       <FormContainer />
       <TableContainer />

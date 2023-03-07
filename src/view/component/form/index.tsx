@@ -26,7 +26,7 @@ const FormContainer = () => {
   };
 
   return (
-    <>
+    <div data-testid="formContainer-component">
       <form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
@@ -53,7 +53,7 @@ const FormContainer = () => {
           <div>{JSON.stringify(result)}</div>
         </Modal>
       )}
-    </>
+    </div>
   );
 };
 

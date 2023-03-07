@@ -67,8 +67,6 @@ const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
     font-size: 16px; // default font size
     color: ${colorStyle.dark};
-    // display: flex;
-    // justify-content: center;
 
     a {
       text-decoration: none;

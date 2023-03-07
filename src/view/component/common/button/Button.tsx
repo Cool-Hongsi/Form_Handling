@@ -6,7 +6,7 @@ import * as Styled from 'view/component/common/button/Styled.Button';
 const Button = ({
   dataTestId,
   type = 'button',
-  width = '55px',
+  width = '60px',
   height = '35px',
   color = colorStyle.white,
   backgroundColor = colorStyle.deepBlue,
