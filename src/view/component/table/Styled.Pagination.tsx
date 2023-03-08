@@ -16,6 +16,7 @@ export const Pagination = styled.div`
   .show-page-status {
     margin-left: 20px;
     color: ${colorStyle.gray};
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 0.9rem;
   }
 `;

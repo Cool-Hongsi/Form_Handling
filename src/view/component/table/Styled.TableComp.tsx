@@ -35,7 +35,7 @@ export const TableComp = styled.div`
     }
 
     td {
-      padding: 5px 10px;
+      padding: 7px 10px;
       font-size: 0.85rem;
       font-weight: 200;
     }

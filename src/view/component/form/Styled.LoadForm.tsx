@@ -23,11 +23,11 @@ export const LoadForm = styled.div`
     }
 
     .loadform-row-main-title {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
 
     .delete-loadform-icon {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       color: ${colorStyle.lightRed};
       cursor: pointer;
     }

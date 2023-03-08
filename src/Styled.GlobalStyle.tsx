@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import NanumGothic from 'resource/font/NanumGothic-Regular.ttf';
 
 /**
  * Get global padding
@@ -56,15 +57,22 @@ export const getResponsiveMediaQuery = (selectedSize: string): string => {
 };
 
 const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: NanumGothic;
+    src: url(${NanumGothic}) format('truetype');
+  }
+  
   *, :after, :before {
     background-repeat: no-repeat;
     box-sizing: inherit;
   }
+
   body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    font-family: NanumGothic;
     font-size: 16px; // default font size
     color: ${colorStyle.dark};
 
