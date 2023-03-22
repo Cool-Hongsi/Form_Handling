@@ -19,7 +19,7 @@ const LoadForm = () => {
     inputData: { loadForm },
   } = useAppSelector((state) => state.orderReducer);
   const dispatch = useAppDispatch();
-  const [addressModalToggle, setAddressModalToggle] = useState<boolean[]>([false, false, false]);
+  const [addressModalToggle, setAddressModalToggle] = useState<string>('');
 
   const addLoadFormFunc = () => {
     dispatch(addLoadForm());
@@ -39,11 +39,9 @@ const LoadForm = () => {
     dispatch(fillForm({ type: 'loadForm', name, value, index }));
   };
 
-  const addressComplete = (data: Address, index: number) => {
-    onChangeLoadInputForDateAndAddress(LOAD_ADDRESS, addressFilter(data), index);
-    const tempAdddressModalToggle = [...addressModalToggle];
-    tempAdddressModalToggle[index] = false;
-    setAddressModalToggle(tempAdddressModalToggle);
+  const addressComplete = (data: Address, index: string) => {
+    onChangeLoadInputForDateAndAddress(LOAD_ADDRESS, addressFilter(data), parseInt(index));
+    setAddressModalToggle('');
   };
 
   return (
@@ -119,11 +117,7 @@ const LoadForm = () => {
                   readOnly={true}
                   name={LOAD_ADDRESS}
                   value={loadForm[index][LOAD_ADDRESS].value}
-                  onClickFunc={() => {
-                    const tempAdddressModalToggle = [...addressModalToggle];
-                    tempAdddressModalToggle[index] = true;
-                    setAddressModalToggle(tempAdddressModalToggle);
-                  }}
+                  onClickFunc={() => setAddressModalToggle(index.toString())}
                 />
                 {loadForm[index][LOAD_ADDRESS].errorMsg && (
                   <span className="loadform-error-msg" data-testid="loadform-address-error-msg">
@@ -132,18 +126,6 @@ const LoadForm = () => {
                 )}
               </div>
             </div>
-            {addressModalToggle[index] && (
-              <Modal
-                dataTestId="loadform-address-modal"
-                onClickCloseFunc={() => {
-                  const tempAdddressModalToggle = [...addressModalToggle];
-                  tempAdddressModalToggle[index] = false;
-                  setAddressModalToggle(tempAdddressModalToggle);
-                }}
-              >
-                <DaumPostcode onComplete={(data: Address) => addressComplete(data, index)} />
-              </Modal>
-            )}
           </div>
         );
       })}
@@ -153,6 +135,13 @@ const LoadForm = () => {
         <div className="add-loadform" data-testid="add-loadform" onClick={addLoadFormFunc}>
           <IoIosAdd className="add-loadform-icon" />
         </div>
+      )}
+
+      {/* Address Modal */}
+      {addressModalToggle && (
+        <Modal dataTestId="loadform-address-modal" onClickCloseFunc={() => setAddressModalToggle('')}>
+          <DaumPostcode onComplete={(data: Address) => addressComplete(data, addressModalToggle)} />
+        </Modal>
       )}
     </Styled.LoadForm>
   );

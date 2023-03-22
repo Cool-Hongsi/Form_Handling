@@ -203,6 +203,7 @@ const orderReducer: Reducer<OrderState, OrderActionTypes> = (
       case DELETE_ORDER_REQUEST:
         draft.deleteOrderApi.loading = true;
         draft.deleteOrderApi.error = null;
+        draft.deleteOrderApi.result = ''; // Initialize for handling delete modal toggle
         break;
       case DELETE_ORDER_SUCCESS:
         draft.deleteOrderApi.loading = false;
