@@ -1,4 +1,4 @@
-# Timf Assignment
+# Form Handling
 
 ## 소개
 
@@ -6,7 +6,7 @@ MSW 라이브러리를 활용하여 Mock 데이터를 관리하고, 폼 핸들�
 
 ## 웹사이트
 
-[Timf Assignment](https://d20tgidcli6bnz.cloudfront.net)
+[Form Handling](https://d20tgidcli6bnz.cloudfront.net)
 
 ## 구조
 
