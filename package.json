@@ -1,7 +1,7 @@
 {
   "name": "timf",
   "version": "1.0.0",
-  "description": "timf assignment",
+  "description": "form handling",
   "main": "index.tsx",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.js --open",
