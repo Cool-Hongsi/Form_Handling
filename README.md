@@ -35,7 +35,7 @@ src
 
 ## 실행
 
-1. git clone `https://github.com/Cool-Hongsi/timf.git`  
+1. git clone `https://github.com/Cool-Hongsi/Form_Handling.git`  
    (env 파일은 프로젝트에 크게 관여하지 않으므로 레포지토리에 추가하였습니다.)
 2. Type `npm install` (필요한 Package 설치)
 3. Type `npm run dev` (development 환경에서 실행)

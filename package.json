@@ -1,7 +1,7 @@
 {
-  "name": "timf",
+  "name": "form_handling",
   "version": "1.0.0",
-  "description": "form handling",
+  "description": "form_handling",
   "main": "index.tsx",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.js --open",
