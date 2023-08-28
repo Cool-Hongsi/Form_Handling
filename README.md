@@ -12,23 +12,19 @@ MSW 라이브러리를 활용하여 Mock 데이터를 관리하고, 폼 핸들�
 
 ```
 src
-├── resource (asset)
-├── service
-│     ├── api
-│     ├── const (constant string)
-│     ├── hook (useSelect / useDispatch)
-│     ├── mock (mock data for testing)
-│     ├── model (OrderModel)
-│     ├── store (store configuration)
-│     └── util
-├── view
-│     ├── component
-│     │     ├── common (reusable component)
-│     │     ├── form
-│     │     ├── header
-│     │     └── table
-│     └── redux (action / reducer / saga)
-
+├── api
+├── component (button / input / modal / select)
+├── const (constant string)
+├── layout
+│     ├── form
+│     ├── header
+│     └── table
+├── mock (mock data for testing)
+├── model (order)
+├── redux (order)
+├── resource (asset / font)
+├── store (store configuration)
+└── util
 
 [ 각각의 테스팅 코드는 디렉토리 `__test__` 폴더에 있습니다. ]
 ```
@@ -44,13 +40,13 @@ src
 ## 모델 (Order)
 
 ```
-export interface LoadPlace {
+export interface ILoadPlace {
   name: string;
   address: string;
   date: string;
 }
 
-export interface OrderModel {
+export interface IOrder {
   name: string;
   phoneNumber: string;
   fromDate: string;
@@ -60,16 +56,16 @@ export interface OrderModel {
   supply: string;
   supplyDetail: string | null;
   address: string;
-  loadPlace: LoadPlace[];
+  loadPlace: ILoadPlace[];
   seqNo?: number;
 }
 ```
 
 ## 반응형 기준
 
-- sm (0 ~ 767.98)
-- md (767.99 ~ 991.98)
-- lg (992 ~ )
+- sm (~ 576)
+- md (577 ~ 992)
+- lg (993 ~)
 
 ## State 관리
 
@@ -90,7 +86,3 @@ export interface OrderModel {
 
 - Webpack
 - Babel
-
-## 버전
-
-- 1.0.0
